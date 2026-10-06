@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Accesibilizador de materiales para docentes</title>
+<style>
+:root{--bg:#f3f1ff;--fg:#1b1b2f;--mut:#4b4b63;--card:#fff;--line:#9a9ab5;--p:#4b2bb8;--pfg:#fff;--focus:#c2410c;--okbg:#d8f3e0;--okfg:#0d5426;--wbg:#ffe8c2;--wfg:#7a3300;--abg:#fddcdc;--afg:#8a1010;--bbg:#dcebff;--bfg:#0b3d8a;--h1:#34229e;--h2:#0b7a75}
+@media (prefers-color-scheme:dark){:root{--bg:#12111f;--fg:#f0effa;--mut:#c9c8de;--card:#1c1a30;--line:#6f6d91;--p:#b9a7ff;--pfg:#1a1033;--focus:#ffb066;--okbg:#12361f;--okfg:#8fe0a8;--wbg:#3d2a0a;--wfg:#ffc884;--abg:#431616;--afg:#ffaaaa;--bbg:#14284a;--bfg:#a9ccff;--h1:#2a1c7a;--h2:#0a5a56}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--fg);font:1.0625rem/1.6 system-ui,"Segoe UI",Arial,sans-serif}
+.hero{background:linear-gradient(135deg,var(--h1),var(--h2));color:#fff;padding:2.5rem 1rem 2rem}
+.wrap,main{max-width:48rem;margin:0 auto}
+main{padding:1rem 1rem 4rem}
+h1{font-size:2.1rem;line-height:1.15;margin:0 0 .6rem}
+.hero p{margin:0 0 1.2rem;font-size:1.1rem;max-width:42rem}
+.feat{list-style:none;display:grid;grid-template-columns:repeat(auto-fit,minmax(13rem,1fr));gap:.75rem;padding:0;margin:0}
+.feat li{background:rgba(255,255,255,.16);border:2px solid rgba(255,255,255,.55);border-radius:10px;padding:.7rem .9rem}
+h2{font-size:1.3rem;margin:0 0 .6rem;display:flex;align-items:center}
+.n{display:inline-grid;place-items:center;flex:none;width:2.1rem;height:2.1rem;border-radius:50%;background:var(--c);color:#fff;margin-right:.6rem;font-size:1rem}
+section{background:var(--card);border:2px solid var(--line);border-left:10px solid var(--c,var(--p));border-radius:10px;padding:1.1rem 1.2rem;margin-top:1.1rem}
+label{display:block;font-weight:600;margin:.8rem 0 .25rem}
+textarea,input[type=text],input[type=file]{width:100%;font:inherit;padding:.6rem;border:2px solid var(--line);border-radius:8px;background:var(--bg);color:var(--fg)}
+input[type=file]{border-style:dashed}
+input[type=file]::file-selector-button{font:inherit;font-weight:700;margin-right:.8rem;padding:.4rem .9rem;border:0;border-radius:6px;background:var(--p);color:var(--pfg);cursor:pointer}
+textarea{min-height:9rem}
+button{font:inherit;font-weight:700;padding:.75rem 1.3rem;border:2px solid var(--p);border-radius:999px;background:var(--p);color:var(--pfg);cursor:pointer;margin:.9rem .5rem 0 0}
+button.sec{background:transparent;color:var(--p)}
+button:hover{filter:brightness(1.1)}
+:focus-visible{outline:3px solid var(--focus);outline-offset:2px}
+.stats{display:grid;grid-template-columns:1fr 1fr;gap:.75rem;margin:.3rem 0 .6rem}
+.stat{border-radius:10px;padding:.7rem 1rem;font-weight:600}
+.stat b{display:block;font-size:2.1rem;line-height:1}
+.stat.ok{background:var(--okbg);color:var(--okfg)}.stat.rv{background:var(--wbg);color:var(--wfg)}
+ul.res{list-style:none;padding:0;margin:.5rem 0}
+ul.res li{padding:.7rem 0;border-top:1px solid var(--line)}
+.badge{display:inline-block;font-size:.8rem;font-weight:700;padding:.05rem .55rem;border:2px solid currentColor;border-radius:999px;margin:0 .4rem .2rem 0}
+.badge.fx{background:var(--okbg);color:var(--okfg)}.badge.rv{background:var(--wbg);color:var(--wfg)}
+.s-Alta{background:var(--abg);color:var(--afg)}.s-Media{background:var(--wbg);color:var(--wfg)}.s-Baja{background:var(--bbg);color:var(--bfg)}
+#prev{border:2px dashed var(--line);border-radius:8px;padding:1rem;margin-top:.5rem;overflow-x:auto}
+#prev img{max-width:100%;height:auto}
+#prev table{border-collapse:collapse}#prev th,#prev td{border:1px solid var(--line);padding:.3rem .5rem}
+#prev th{background:var(--bbg);color:var(--bfg)}
+.alt{display:grid;grid-template-columns:7rem 1fr;gap:.75rem;border-top:1px solid var(--line);padding:.75rem 0}
+.alt img{max-width:7rem;height:auto;border-radius:6px}
+.sw{display:inline-block;width:2rem;height:2rem;vertical-align:middle;border:2px solid var(--line);border-radius:6px}
+small{color:var(--mut)}
+@media (max-width:30rem){.alt{grid-template-columns:1fr}.stats{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<header class="hero"><div class="wrap">
+<h1>Accesibilizador de materiales</h1>
+<p>Pegá un texto o subí un Word (.docx) y te muestro qué barreras tiene para quien usa lector de pantalla. Todo se procesa en tu navegador: tu archivo no se sube a ningún servidor.</p>
+<ul class="feat"><li><strong>Analiza</strong> y detecta barreras</li><li><strong>Arregla</strong> lo que se puede solo</li><li><strong>Te guía</strong> con las imágenes</li></ul>
+</div></header>
+<main>
+<section aria-labelledby="t1" style="--c:#4b2bb8">
+<h2 id="t1"><span class="n" aria-hidden="true">1</span>Tu material</h2>
+<label for="file">Archivo Word (.docx)</label>
+<input type="file" id="file" accept=".docx">
+<label for="txt">O pegá el texto acá</label>
+<textarea id="txt" placeholder="Pegá el contenido de tu material"></textarea>
+<button id="go">Analizar material</button>
+<p id="status" role="status" aria-live="polite"></p>
+</section>
+<div id="out" hidden>
+<section aria-labelledby="t2" style="--c:#0b6e69">
+<h2 id="t2"><span class="n" aria-hidden="true">2</span>Resultado del análisis</h2>
+<div id="res" tabindex="-1"></div>
+</section>
+<section aria-labelledby="t3" style="--c:#a3185f">
+<h2 id="t3"><span class="n" aria-hidden="true">3</span>Describí las imágenes</h2>
+<p><small>Contá qué información aporta la imagen, no cómo se ve. No empieces con “imagen de”. Si es un gráfico, resumí la conclusión. Apuntá a una o dos oraciones. Si solo decora, marcala como decorativa.</small></p>
+<div id="alts"></div>
+</section>
+<section aria-labelledby="t4" style="--c:#a14a00">
+<h2 id="t4"><span class="n" aria-hidden="true">4</span>Versión accesible</h2>
+<div id="prev"></div>
+<button id="dl">Descargar versión accesible (.html)</button>
+<button id="cp" class="sec">Copiar texto</button>
+</section>
+</div>
+<section aria-labelledby="t5" style="--c:#1d57c4">
+<h2 id="t5"><span class="n" aria-hidden="true">+</span>Verificador de contraste</h2>
+<p><small>El análisis no puede leer los colores de tu Word. Probalos acá: el texto normal necesita 4,5 a 1 como mínimo.</small></p>
+<label for="c1">Color del texto</label><input type="text" id="c1" value="#767676">
+<label for="c2">Color de fondo</label><input type="text" id="c2" value="#ffffff">
+<p id="cr" role="status" aria-live="polite"></p>
+</section>
+</main>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mammoth/1.6.0/mammoth.browser.min.js"></script>
+<script>
+const $=s=>document.querySelector(s);
+let title='material-accesible';
+const esc=s=>s.replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const add=(o,sev,msg,fixed)=>o.push({sev,msg,fixed});
+const words=t=>t.trim().split(/\s+/).filter(Boolean).length;
+
+function listify(b,re,tag,label,out){
+  let n=0,kids=[...b.children];
+  for(let i=0;i<kids.length;i++){
+    if(kids[i].tagName!=='P'||!re.test(kids[i].textContent))continue;
+    const l=document.createElement(tag);
+    let j=i;
+    while(j<kids.length&&kids[j].tagName==='P'&&re.test(kids[j].textContent)){
+      const li=document.createElement('li');
+      li.textContent=kids[j].textContent.replace(re,'').trim();
+      l.appendChild(li);j++;
+    }
+    if(l.children.length>1){kids[i].before(l);for(let k=i;k<j;k++)kids[k].remove();n++;}
+    i=j-1;
+  }
+  if(n)add(out,'Media',`${label} escritas a mano (con guiones, viñetas o números tipeados) pasaron a listas reales: ${n}. Así el lector anuncia “lista de 5 elementos”.`,true);
+}
+
+function analizar(html){
+  const d=new DOMParser().parseFromString(html,'text/html'),b=d.body,out=[];
+  let n=0;
+  b.querySelectorAll('p').forEach(p=>{if(!p.textContent.trim()&&!p.querySelector('img')){p.remove();n++}});
+  if(n)add(out,'Baja',`Se quitaron ${n} párrafos vacíos usados como espacio. El lector los anuncia como “en blanco”.`,true);
+
+  n=0;
+  b.querySelectorAll('p').forEach(p=>{
+    const t=p.textContent.trim();
+    const bold=p.children.length===1&&/^(STRONG|B)$/.test(p.children[0].tagName)&&p.children[0].textContent.trim()===t;
+    const caps=t===t.toUpperCase()&&/[A-ZÁÉÍÓÚÑ]{3}/.test(t)&&words(t)<=8;
+    if(t&&t.length<80&&!/[.,;]$/.test(t)&&(bold||caps)){const h=d.createElement('h2');h.textContent=t;p.replaceWith(h);n++}
+  });
+  if(n)add(out,'Alta',`${n} títulos estaban “simulados” con negrita o mayúsculas. Ahora son títulos reales, que permiten navegar por encabezados.`,true);
+
+  listify(b,/^\s*[-•*–·]\s+/,'ul','Listas con viñetas',out);
+  listify(b,/^\s*\d+[.)]\s+/,'ol','Listas numeradas',out);
+
+  n=0;
+  const w=d.createTreeWalker(b,NodeFilter.SHOW_TEXT);let nd;
+  while(nd=w.nextNode()){const v=nd.nodeValue.replace(/[ \u00a0\t]{2,}/g,' ');if(v!==nd.nodeValue){nd.nodeValue=v;n++}}
+  if(n)add(out,'Baja',`Se unificaron espacios repetidos usados para alinear texto (${n} lugares). Usá sangrías o tablas reales en su lugar.`,true);
+
+  b.querySelectorAll('table').forEach(t=>{
+    if(!t.querySelector('th')&&t.rows[0]){
+      [...t.rows[0].cells].forEach(c=>{const th=d.createElement('th');th.innerHTML=c.innerHTML;th.scope='col';c.replaceWith(th)});
+      add(out,'Alta','Una tabla no tenía fila de encabezado. Se marcó la primera fila como encabezado. Revisá que sea la correcta.',true);
+    }else t.querySelectorAll('th').forEach(th=>th.scope=th.scope||'col');
+    if(t.querySelector('[colspan],[rowspan]'))add(out,'Media','Una tabla tiene celdas combinadas. Los lectores de pantalla se pierden con ellas: dividila en tablas simples.',false);
+    if(t.rows.length>1&&t.rows[0].cells.length===1)add(out,'Media','Parece que una tabla se usa para maquetar. Probá con párrafos o listas.',false);
+  });
+
+  const hs=[...b.querySelectorAll('h1,h2,h3,h4,h5,h6')];
+  if(!hs.length&&words(b.textContent)>150)add(out,'Alta','El documento es largo y no tiene títulos. Agregá títulos para que se pueda navegar por secciones.',false);
+  let prev=0,saltos=0;
+  hs.forEach(h=>{const l=+h.tagName[1];if(prev&&l>prev+1)saltos++;prev=l});
+  if(saltos)add(out,'Media',`Hay ${saltos} saltos en la jerarquía de títulos (por ejemplo, de H1 a H3). Usá los niveles en orden.`,false);
+
+  let vag=0;
+  b.querySelectorAll('a').forEach(a=>{if(/^(aqu[ií]|ac[aá]|click|clic|link|enlace|ver m[aá]s|haz clic aqu[ií])\.?$/i.test(a.textContent.trim())||/^https?:/i.test(a.textContent.trim()))vag++});
+  if(/(haz\s+)?cl[ií]c[k]?\s+(aqu[ií]|ac[aá])/i.test(b.textContent))vag++;
+  if(vag)add(out,'Media','Hay enlaces con texto poco claro (“clic aquí”, “link” o la URL entera). Escribí qué encuentra la persona al abrirlo, por ejemplo “Guía de ejercicios (PDF)”.',false);
+
+  let largos=0,mayus=0;
+  b.querySelectorAll('p').forEach(p=>{const t=p.textContent.trim();if(words(t)>120)largos++;if(words(t)>8&&t===t.toUpperCase()&&/[A-ZÁÉÍÓÚÑ]/.test(t))mayus++});
+  if(largos)add(out,'Baja',`${largos} párrafos tienen más de 120 palabras. Dividirlos ayuda a la lectura, sobre todo con lector de pantalla o dislexia.`,false);
+  if(mayus)add(out,'Baja',`${mayus} párrafos están todo en mayúsculas. Cuesta leerlos y algunos lectores deletrean las letras.`,false);
+
+  b.querySelectorAll('img').forEach(im=>{const a=(im.getAttribute('alt')||'').trim();if(!a)im.removeAttribute('alt');else if(/\.(png|jpe?g|gif|webp)$/i.test(a)||/^(imagen|image|foto|img)\d*$/i.test(a))add(out,'Media',`Una imagen tiene un texto alternativo poco útil (“${esc(a)}”).`,false)});
+  const sin=b.querySelectorAll('img:not([alt])').length;
+  if(sin)add(out,'Alta',`${sin} imágenes no tienen texto alternativo. Descríbelas en el paso 3.`,false);
+  if(!out.length)add(out,'Baja','No encontré barreras en lo que puedo analizar. Igual probá el material con un lector de pantalla como NVDA o JAWS.',true);
+  return {b,out};
+}
+
+function lum(h){const m=h.replace('#','').match(/^([0-9a-f]{3}|[0-9a-f]{6})$/i);if(!m)return null;let x=m[1];if(x.length===3)x=x.replace(/./g,'$&$&');const c=[0,2,4].map(i=>{const v=parseInt(x.substr(i,2),16)/255;return v<=.03928?v/12.92:Math.pow((v+.055)/1.055,2.4)});return .2126*c[0]+.7152*c[1]+.0722*c[2]}
+function contraste(){const a=lum($('#c1').value.trim()),b=lum($('#c2').value.trim());if(a===null||b===null){$('#cr').textContent='Escribí colores en formato #rrggbb.';return}
+  const r=(Math.max(a,b)+.05)/(Math.min(a,b)+.05);
+  $('#cr').innerHTML=`<span class="sw" style="background:${esc($('#c2').value)}"></span> Relación ${r.toFixed(2).replace('.',',')} a 1. Texto normal: ${r>=7?'AAA (excelente)':r>=4.5?'AA (cumple)':'no cumple'}. Texto grande: ${r>=4.5?'AAA':r>=3?'AA (cumple)':'no cumple'}.`}
+['c1','c2'].forEach(i=>$('#'+i).addEventListener('input',contraste));contraste();
+
+function pendientes(){return [...$('#prev').querySelectorAll('img')].filter(im=>!(im.getAttribute('alt')||'').trim()&&im.dataset.deco!=='1')}
+
+$('#go').addEventListener('click',async()=>{
+  const f=$('#file').files[0],t=$('#txt').value.trim(),st=$('#status');let html='';
+  try{
+    if(f){
+      if(!/\.docx$/i.test(f.name)){st.textContent='Por ahora solo leo archivos .docx. Si tenés un PDF, abrilo en Word y guardalo como .docx, o pegá el texto.';return}
+      st.textContent='Analizando…';title=f.name.replace(/\.docx$/i,'');
+      const r=await mammoth.convertToHtml({arrayBuffer:await f.arrayBuffer()},{convertImage:mammoth.images.imgElement(i=>i.read('base64').then(d=>({src:`data:${i.contentType};base64,${d}`,alt:i.altText||''})))});
+      html=r.value;
+    }else if(t){title='material-accesible';html=t.split('\n').filter(l=>l.trim()).map(l=>`<p>${esc(l)}</p>`).join('')}
+    else{st.textContent='Pegá un texto o elegí un archivo .docx.';return}
+  }catch(e){st.textContent='No pude leer el archivo. Verificá que sea un .docx válido.';return}
+  const {b,out}=analizar(html);
+  $('#prev').innerHTML=b.innerHTML;
+  const fx=out.filter(o=>o.fixed),rv=out.filter(o=>!o.fixed);
+  const li=(o)=>`<li><span class="badge ${o.fixed?'fx':'rv'}">${o.fixed?'✔ Arreglado':'⚠ Para revisar'}</span><span class="badge s-${o.sev}">Prioridad ${o.sev.toLowerCase()}</span>${o.msg}</li>`;
+  $('#res').innerHTML=`<div class="stats"><div class="stat ok"><b>${fx.length}</b>arreglados automáticamente</div><div class="stat rv"><b>${rv.length}</b>para revisar</div></div><ul class="res">${rv.map(li).join('')}${fx.map(li).join('')}</ul>`;
+  const box=$('#alts');box.innerHTML='';
+  const imgs=[...$('#prev').querySelectorAll('img')];
+  if(!imgs.length)box.innerHTML='<p>No hay imágenes en este material.</p>';
+  imgs.forEach((im,i)=>{
+    const row=document.createElement('div');row.className='alt';
+    const th=document.createElement('img');th.src=im.src;th.alt='';
+    const c=document.createElement('div');
+    c.innerHTML=`<label for="a${i}">Descripción de la imagen ${i+1}</label><input type="text" id="a${i}" value="${esc(im.getAttribute('alt')||'')}"><label style="font-weight:400"><input type="checkbox" id="d${i}"> Es decorativa (no aporta información)</label>`;
+    row.append(th,c);box.appendChild(row);
+    const inp=c.querySelector('input[type=text]'),ck=c.querySelector('input[type=checkbox]');
+    inp.addEventListener('input',()=>{inp.value.trim()?im.setAttribute('alt',inp.value.trim()):im.removeAttribute('alt')});
+    ck.addEventListener('change',()=>{if(ck.checked){im.setAttribute('alt','');im.dataset.deco='1';inp.value='';inp.disabled=true}else{im.removeAttribute('alt');delete im.dataset.deco;inp.disabled=false}});
+  });
+  $('#out').hidden=false;st.textContent='Listo. El resultado está más abajo.';$('#res').focus();
+});
+
+$('#dl').addEventListener('click',()=>{
+  const p=pendientes().length;
+  if(p&&!confirm(`Quedan ${p} imágenes sin descripción. ¿Descargar igual?`))return;
+  const clean=$('#prev').cloneNode(true);clean.querySelectorAll('[data-deco]').forEach(e=>e.removeAttribute('data-deco'));
+  const h1=clean.querySelector('h1,h2');
+  const doc=`<!DOCTYPE html><html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>${esc(h1?h1.textContent:title)}</title><style>body{font:1.125rem/1.6 system-ui,Arial,sans-serif;max-width:70ch;margin:auto;padding:1rem;color:#111;background:#fff}table{border-collapse:collapse}th,td{border:1px solid #444;padding:.4rem}img{max-width:100%;height:auto}</style></head><body><main>${clean.innerHTML}</main></body></html>`;
+  const a=document.createElement('a');a.href=URL.createObjectURL(new Blob([doc],{type:'text/html'}));a.download=title+'-accesible.html';a.click();
+});
+$('#cp').addEventListener('click',async()=>{try{await navigator.clipboard.writeText($('#prev').innerText);$('#status').textContent='Texto copiado.'}catch(e){$('#status').textContent='No pude copiar. Seleccioná el texto a mano.'}});
+</script>
+</body>
+</html>
